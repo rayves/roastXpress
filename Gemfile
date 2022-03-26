@@ -70,3 +70,5 @@ gem "devise", "~> 4.8"
 gem "bootstrap", "~> 5.1"
 
 gem "aws-sdk-s3", "~> 1.113"
+
+gem "faker", "~> 2.20"

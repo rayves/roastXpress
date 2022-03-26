@@ -1,0 +1,2 @@
+class RoastType < ApplicationRecord
+end
