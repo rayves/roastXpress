@@ -1,9 +1,14 @@
 .background {
+    background-image: image-url('home_background.jpg');
     display: flex;
     justify-content: center;
     align-items: center;
     height: 90vh;
     width: 100%;
-    background-image: image-url('home_background.jpg');
     background-size: cover;
 }
+
+// .title-home {
+//     display: flex;
+//     align-items: flex-start;
+// }
