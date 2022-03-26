@@ -8,19 +8,11 @@
 
 grind_types = ["extra fine", "fine", "medium", "coarse", "extra coarse"]
 
-roast_types = ["light", "medium", "medium/dark", "dark"]
 
 if GrindType.count == 0
     grind_types.each do |grind|
         GrindType.create(name: grind)
         puts "Generated Grind Type #{grind}"
-    end
-end
-
-if RoastType.count == 0
-    roast_types.each do |roast|
-        RoastType.create(name: roast)
-        puts "Generated Roast Type #{roast}"
     end
 end
 

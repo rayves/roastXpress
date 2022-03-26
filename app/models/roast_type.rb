@@ -1,2 +1,0 @@
-class RoastType < ApplicationRecord
-end
