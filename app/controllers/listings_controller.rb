@@ -7,9 +7,11 @@ class ListingsController < ApplicationController
   end
 
   def new
+    @listing = Listing.new
   end
 
   def create
+    @listing = current_user.listings.new(listing_params)
   end
 
   def edit

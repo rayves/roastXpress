@@ -24,3 +24,26 @@ if Flavor.count == 0
         puts "Generated flavor no. #{i+1}"
     end
 end
+
+# if User.count == 0
+#     sample_user = User.create(
+#         email: "test@sample.com",
+#         password: "password1"
+#     )
+# end
+
+# if Listing.count == 0
+#     8.times do |i|
+#         Listing.create(
+#             name: Faker::Coffee.blend_name,
+#             size: 250,
+#             price: rand(1..500),
+#             description: Faker::Coffee.notes,
+#             quantity: 10,
+#             origin: Faker::Address.country,
+#             roast_type: rand(1..4),
+#             grind_type: GrindType.order(Arel.sql('RANDOM()')).first,
+#             user_id: sample_user.id
+#         )
+#     end
+# end
