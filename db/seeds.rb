@@ -9,6 +9,8 @@
 # Clean database and reset id sequence to 1
 Listing.delete_all
 ActiveRecord::Base.connection.reset_pk_sequence!("listings")
+User.delete_all
+ActiveRecord::Base.connection.reset_pk_sequence!("users")
 
 
 grind_types = ["extra fine", "fine", "medium", "coarse", "extra coarse"]
@@ -30,25 +32,25 @@ if Flavor.count == 0
     end
 end
 
-# if User.count == 0
-#     sample_user = User.create(
-#         email: "test@sample.com",
-#         password: "password1"
-#     )
-# end
+if User.count == 0
+    sample_user = User.create(
+        email: "test@sample.com",
+        password: "password1"
+    )
+end
 
-# if Listing.count == 0
-#     8.times do |i|
-#         Listing.create(
-#             name: Faker::Coffee.blend_name,
-#             size: 250,
-#             price: rand(1..500),
-#             description: Faker::Coffee.notes,
-#             quantity: 10,
-#             origin: Faker::Address.country,
-#             roast_type: rand(1..4),
-#             grind_type: GrindType.order(Arel.sql('RANDOM()')).first,
-#             user_id: sample_user.id
-#         )
-#     end
-# end
+if Listing.count == 0
+    8.times do |i|
+        Listing.create(
+            name: Faker::Coffee.blend_name,
+            size: 250,
+            price: rand(1..500),
+            description: Faker::Coffee.notes,
+            quantity: 10,
+            origin: Faker::Address.country,
+            roast_type: rand(1..4),
+            grind_type: GrindType.order(Arel.sql('RANDOM()')).first,
+            user_id: sample_user.id
+        )
+    end
+end

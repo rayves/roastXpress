@@ -4,7 +4,7 @@ class ListingsController < ApplicationController
   before_action :set_form_vars, only: %i{new edit}
 
   def index
-    @listing = Listing.all
+    @listings = Listing.all
   end
 
   def show
