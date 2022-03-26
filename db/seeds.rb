@@ -6,6 +6,11 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
+# Clean database and reset id sequence to 1
+Listing.delete_all
+ActiveRecord::Base.connection.reset_pk_sequence!("listings")
+
+
 grind_types = ["extra fine", "fine", "medium", "coarse", "extra coarse"]
 
 
