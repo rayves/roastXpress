@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_03_26_002756) do
+ActiveRecord::Schema[7.0].define(version: 2022_03_26_054235) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -54,6 +54,22 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_26_002756) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "listings", force: :cascade do |t|
+    t.string "name"
+    t.integer "size"
+    t.integer "price"
+    t.text "description"
+    t.integer "quantity"
+    t.string "origin"
+    t.integer "roast_type"
+    t.bigint "grind_type_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["grind_type_id"], name: "index_listings_on_grind_type_id"
+    t.index ["user_id"], name: "index_listings_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -68,4 +84,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_26_002756) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "listings", "grind_types"
+  add_foreign_key "listings", "users"
 end
