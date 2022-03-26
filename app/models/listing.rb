@@ -6,4 +6,7 @@ class Listing < ApplicationRecord
   enum roast_type: {light: 1, medium: 2, medium_dark: 3, dark: 4}
   has_one_attached :picture
   
+  # validation
+  validates :name, :size, :price, :description, :quantity, :roast_type, :origin, presence: true
+  
 end

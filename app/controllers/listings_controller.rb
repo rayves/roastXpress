@@ -21,6 +21,7 @@ class ListingsController < ApplicationController
     if @listing.save
       redirect_to @listing, notice: "Listing was successfully created"
     else
+      set_form_vars
       render "new", status: 422
     end
     
@@ -35,6 +36,7 @@ class ListingsController < ApplicationController
     if @listing.save
       redirect_to @listing, notice: "Listing was successfully updated"
     else
+      set_form_vars
       render "edit", status: 422
     end
   end
