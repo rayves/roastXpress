@@ -8,6 +8,27 @@
 
 grind_types = ["extra fine", "fine", "medium", "coarse", "extra coarse"]
 
-roast_types = ["light", "medium", "medium/dark" "dark"]
+roast_types = ["light", "medium", "medium/dark", "dark"]
 
-flavors = ["strawberry", "pear", "mango", "dates", "honey", "caramel", "chocolate", "dark chocolate", "peanut", "pepper", "strawberry"]
+if GrindType.count == 0
+    grind_types.each do |grind|
+        GrindType.create(name: grind)
+        puts "Generated Grind Type #{grind}"
+    end
+end
+
+if RoastType.count == 0
+    roast_types.each do |roast|
+        RoastType.create(name: roast)
+        puts "Generated Roast Type #{roast}"
+    end
+end
+
+if Flavor.count == 0
+    15.times do |i|
+        Flavor.create(
+            name: Faker::Dessert.flavor
+        )
+        puts "Generated flavor no. #{i+1}"
+    end
+end
