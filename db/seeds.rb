@@ -37,6 +37,7 @@ if User.count == 0
         email: "test@sample.com",
         password: "password1"
     )
+    puts "sample_user generated"
 end
 
 if Listing.count == 0
@@ -52,5 +53,6 @@ if Listing.count == 0
             grind_type: GrindType.order(Arel.sql('RANDOM()')).first,
             user_id: sample_user.id
         )
+        puts "sample_user created listing no. #{i}"
     end
 end

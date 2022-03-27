@@ -6,7 +6,7 @@
         <div class="col mb-4">
             <div class="card cards border-dark h-100">
                 <% if listing.picture.attached? %>
-                <%= image_tag listing.picture, class: "thumbnail card-img top", alt: listing.title %>
+                <%= image_tag listing.picture, class: "thumbnail card-img top", alt: listing.name %>
                 <% else %>
                 <%= image_tag "default_listing.jpg", class: "thumbnail card-img top", alt: "coffee cup" %>
                 <% end %>
