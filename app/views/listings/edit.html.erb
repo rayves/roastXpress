@@ -1,0 +1,7 @@
+<main class="ms-2">
+    <h1>Edit Listing</h1>
+
+    <%= render "form" %>
+
+    <%= button_to "Remove Listing", {action: "destroy", id: @listing.id}, form: { data: { turbo_confirm: "Are you sure?" } }, method: :delete, class: "btn btn-danger mt-2" %>
+</main>

@@ -1,0 +1,13 @@
+<% if @listing.errors.any? %>
+<div class="alert alert-danger alert-dismissable fade show" role="alert">
+    <h3><%= pluralize(@listing.errors.count, "error") %> prohibited this listing form being saved</h3>
+    <ul>
+        <% @listing.errors.each do |message| %>
+        <li><%= message.full_message %></li>
+        <% end %>
+    </ul>
+    <button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true"></span>
+    </button>
+</div>
+<% end %>

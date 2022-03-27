@@ -1,0 +1,24 @@
+.background {
+    background-image: image-url('home_background.jpg');
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+    width: 100%;
+    background-size: cover;
+}
+
+.coming-soon {
+    background-image: image-url('coming-soon.jpg');
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+    background-size: cover;
+}
+
+.coming-soon-header {
+    color: white;
+    weight: bold;
+}
