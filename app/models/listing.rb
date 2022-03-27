@@ -12,5 +12,15 @@ class Listing < ApplicationRecord
   # validation
   validates :name, :size, :price, :description, :quantity, :roast_type, :origin, presence: true
   validates :name, length: {minimum: 4}
+
+  # Sanitise data with lifecycle hooks
+  before_save :remove_whitespace
   
+end
+
+private
+
+def remove_whitespace
+  self.title = self.title.strip
+  self.description = self.description.strip
 end
