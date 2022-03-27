@@ -1,57 +1,70 @@
-<%= form_with model: @listing, local: true do |f| %>
+<main class="ms-3">
+    <%= form_with model: @listing, local: true do |f| %>
 
-<%= render "shared/form_error_messages" %>
+    <%= render "shared/form_error_messages" %>
 
-<div class="form-group mb-3">
-    <%= f.label :name, class: "form-label" %>
-    <%= f.text_field :name %>
-</div>
+    <div class="form-group mb-3">
+        <%= f.label :name, class: "form-label" %>
+        <%= f.text_field :name %>
+    </div>
 
-<div class="form-group mb-3">
-    <%= f.label :price, class: "form-label" %>
-    <%= f.number_field :price %>
-</div>
+    <div class="form-group mb-3">
+        <%= f.label :price, class: "form-label" %>
+        <%= f.number_field :price %>
+    </div>
 
-<div class="form-group mb-3">
-    <%= f.label :size, class: "form-label" %>
-    <%= f.number_field :size %>
-</div>
+    <div class="form-group mb-3">
+        <%= f.label :size, class: "form-label" %>
+        <span>(in grams)</span>
+        <%= f.number_field :size %>
+    </div>
 
-<div class="form-group mb-3">
-    <%= f.label :quantity, class: "form-label" %>
-    <%= f.number_field :quantity %>
-</div>
+    <div class="form-group mb-3">
+        <%= f.label :quantity, class: "form-label" %>
+        <%= f.number_field :quantity %>
+    </div>
 
-<div class="form-group mb-3">
-    <%= f.label :origin, class: "form-label" %>
-    <%= f.text_field :origin %>
-</div>
+    <div class="form-group mb-3">
+        <%= f.label :origin, class: "form-label" %>
+        <%= f.text_field :origin %>
+    </div>
 
-<div class="form-group mb-3">
-    <%= f.label :grind_type_id, class: "form-label" %>
-    <%= f.select :grind_type_id, @grind_types.map {|c| [c.name.titleize, c.id]}, class: "form-select" %>
-</div>
+    <div class="form-group mb-3">
+        <%= f.label :grind_type_id, class: "form-label" %>
+        <%= f.select :grind_type_id, @grind_types.map {|c| [c.name.titleize, c.id]}, class: "form-select" %>
+    </div>
 
-<h5 class="mb-3 me-2">Roast Type</h5>
-<% @roast_types.each do |option| %>
-<%= f.label :roast_type, format_roast_type(option), class: "form-label me-1" %>
-<%= f.radio_button :roast_type, option, class: "me-2" %>
-<% end %>
+    <h5 class="mb-3 me-2">Roast Type</h5>
+    <% @roast_types.each do |option| %>
+    <%= f.radio_button :roast_type, option, class: "" %>
+    <%= f.label :roast_type, format_roast_type(option), class: "form-label me-1" %>
+    <br>
+    <% end %>
 
-<div class="form-group mb-3">
-    <%= f.label :picture, class: "form-label" %>
-    <%= f.file_field :picture, accept: "image/png,image/jpg,image/jpeg" %>
-</div>
+    <h5 class="mb-3 me-2">Flavors</h5>
+    <div class="form-check mb-3 me-2">
+        <%= f.collection_check_boxes :flavor_ids, @flavors, :id, :name do |b| %>
+        <%= b.check_box class: "form-check-line mr-2" %>
+        <%= b.label class: "form-check-label" %>
+        <br>
+        <% end %>
+    </div>
 
-<div class="form-group mb-3">
-    <%= f.label :description, class: "form-label" %>
-    <%= f.text_area :description, class: "form-control" %>
-</div>
+    <div class="form-group mb-3">
+        <%= f.label :picture, class: "form-label" %>
+        <%= f.file_field :picture, accept: "image/png,image/jpg,image/jpeg" %>
+    </div>
 
-<div class="actions mb-2">
-    <%= f.submit %>
-</div>
+    <div class="form-group mb-3">
+        <%= f.label :description, class: "form-label" %>
+        <%= f.text_area :description, class: "form-control" %>
+    </div>
 
-<% end %>
+    <div class="actions mb-2">
+        <%= f.submit %>
+    </div>
 
-<%= button_to "Cancel", home_path, method: :get %>
+    <% end %>
+
+    <%= button_to "Cancel", home_path, method: :get %>
+</main>

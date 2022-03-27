@@ -5,7 +5,7 @@ class ListingsController < ApplicationController
   before_action :set_listing, only: %i{show edit update destroy}
   before_action :set_form_vars, only: %i{new edit}
   # check if the listing's user id equals the current user id. If not flash alert and redirect.
-  before_action :authorize_user, only: %i{edit update}
+  before_action :authorize_user, only: %i{edit update destroy}
 
   def index
     @listings = Listing.all
@@ -54,7 +54,7 @@ end
 private
 
 def listing_params
-  params.require(:listing).permit(:name, :size, :price, :description, :quantity, :origin, :roast_type, :grind_type_id, :picture)
+  params.require(:listing).permit(:name, :size, :price, :description, :quantity, :origin, :roast_type, :grind_type_id, :picture, flavor_ids: [])
 end
 
 def set_listing
@@ -65,6 +65,7 @@ end
 def set_form_vars
   @grind_types = GrindType.all
   @roast_types = Listing.roast_types.keys
+  @flavors = Flavor.all
 end
 
  # if the listing's user id does not match that of the currently signed in user then redirect and flash alert

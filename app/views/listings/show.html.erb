@@ -9,12 +9,23 @@
         </div>
     </div>
     <div class="sidebar col-lg-4 p-0 mx-2 d-md-block">
+
         <h1 class="mb-sm-2 mb-md-5"><%= @listing.name %></h1>
+
         <h2 class="mb-2">Grind Type: <%= @listing.grind_type.name %></h2>
+
         <h4 class="text-muted mb-3">Roast Type: <%= format_roast_type(@listing.roast_type) %></h4>
+
         <h5 class="text-muted mb-3">Origin: <%= @listing.origin %></h5>
+
+        <% @listing.flavors.each do |flavor| %>
+        <span class="badge bg-secondary"><%= flavor.name %></span>
+        <% end %>
+
         <h5 class="text-muted mb-3">Size: <%= @listing.size %></h5>
+
         <h5 class="text-muted mb-3">Price: <%= @listing.price %></h5>
+
         <p><%= @listing.description %></p>
 
         <div class="container">

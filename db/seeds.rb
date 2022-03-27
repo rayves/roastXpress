@@ -53,6 +53,6 @@ if Listing.count == 0
             grind_type: GrindType.order(Arel.sql('RANDOM()')).first,
             user_id: sample_user.id
         )
-        puts "sample_user created listing no. #{i}"
+        puts "sample_user created listing no. #{i+1}"
     end
 end
