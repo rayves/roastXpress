@@ -15,8 +15,16 @@
         <h5 class="text-muted mb-3">Origin: <%= @listing.origin %></h5>
         <h5 class="text-muted mb-3">Size: <%= @listing.size %></h5>
         <h5 class="text-muted mb-3">Price: <%= @listing.price %></h5>
-
         <p><%= @listing.description %></p>
+
+        <div class="container">
+            <% if current_user && current_user.id == @listing.user_id %>
+            <div class="d-flex justify-content-equally">
+                <%= link_to "Edit", edit_listing_path(@listing.id), class: "btn btn-warning me-2" %>
+                <%= button_to "Remove Listing", {action: "destroy", id: @listing.id}, form: { data: { turbo_confirm: "Are you sure?" } }, method: :delete, class: "btn btn-danger" %>
+            </div>
+            <% end %>
+        </div>
     </div>
 
 </section>
