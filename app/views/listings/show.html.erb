@@ -1,2 +1,22 @@
-<h1>Listings#show</h1>
-<p>Find me in app/views/listings/show.html.erb</p>
+<section class="container d-flex flex-column flex-md-row px-2 my-2 my-md-2">
+    <div class="content col-12 col-md-12 col-lg-8 p-0 pr-md-3">
+        <div class="col-12 p-0 main-preview mb-4">
+            <% if @listing.picture.attached? %>
+            <%= image_tag @listing.picture, class: "thumbnail card-img top", alt: @listing.name %>
+            <% else %>
+            <%= image_tag "default_listing.jpg", class: "thumbnail card-img top", alt: "coffee cup" %>
+            <% end %>
+        </div>
+    </div>
+    <div class="sidebar col-lg-4 p-0 mx-2 d-md-block">
+        <h1 class="mb-sm-2 mb-md-5"><%= @listing.name %></h1>
+        <h2 class="mb-2">Grind Type: <%= @listing.grind_type.name %></h2>
+        <h4 class="text-muted mb-3">Roast Type: <%= format_roast_type(@listing.roast_type) %></h4>
+        <h5 class="text-muted mb-3">Origin: <%= @listing.origin %></h5>
+        <h5 class="text-muted mb-3">Size: <%= @listing.size %></h5>
+        <h5 class="text-muted mb-3">Price: <%= @listing.price %></h5>
+
+        <p><%= @listing.description %></p>
+    </div>
+
+</section>

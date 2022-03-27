@@ -1,5 +1,5 @@
 class ListingsController < ApplicationController
-# give access to listing for specified actions
+# set instance variable @listing so actions can access all listings variable
   before_action :set_listing, only: %i{show edit update destroy}
   before_action :set_form_vars, only: %i{new edit}
 
