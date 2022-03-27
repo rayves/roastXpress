@@ -72,3 +72,5 @@ gem "bootstrap", "~> 5.1"
 gem "aws-sdk-s3", "~> 1.113"
 
 gem "faker", "~> 2.20"
+
+gem "stripe", "~> 5.46"
