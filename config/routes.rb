@@ -13,6 +13,11 @@ Rails.application.routes.draw do
   get "about_us", to: "pages#about", as: "about_us"
   get "contact_us", to: "pages#contact", as: "contact_us"
 
+  # Profile paths
+  get "profile", to: "profiles#index", as: "profile"
+  get "profile/listings", to: "profiles#listings", as: "profile_listings"
+  get "profile/orders", to: "profiles#orders", as: "profile_orders"
+
   # listings paths
   get "listings", to: "listings#index", as: "listings" #=> get listings index - displays all listings
   post "listings", to: "listings#create" #=> post request to create new listing
