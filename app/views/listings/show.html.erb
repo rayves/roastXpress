@@ -33,7 +33,7 @@
         <button class="btn btn-primary mb-3 pr-2" data-stripe="payment">Buy
             <%= "$#{@listing.price}" %></button>
         <% elsif @listing.quantity < 1 %>
-        <button class="btn btn-secondary" disabled>SOLD OUT</button>
+        <button class="btn btn-secondary mb-2" disabled>SOLD OUT</button>
         <% else %>
         <%= button_to "Login to buy", new_user_session_path, class: "btn btn-info" %>
         <% end %>

@@ -1,1 +1,2 @@
-<p>Thanks for buying</p>
+<p>Thanks for buying <%= @order.listing.name %></p>
+<%= link_to "View Receipt", @order.receipt_url %>
