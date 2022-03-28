@@ -22,4 +22,7 @@ Rails.application.routes.draw do
   put "listings/:id", to: "listings#update" #=> put/patch request to update listing after edting
   patch "listings/:id", to: "listings#update" #=> put/patch request to update listing after edting
   delete "listings/:id", to: "listings#destroy", as: "delete_listing" 
+
+  get "/payments/success/:id", to: "payments#success", as: "payments_success"
+  post "/payments/webhook", to: "payments#webhook"
 end
