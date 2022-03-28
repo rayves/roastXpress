@@ -34,7 +34,7 @@ class ListingsController < ApplicationController
         metadata: {
           # this sends the below data to stripe and when data is retrieved, a row can be created in the database to track this. i.e. that the customer has made a payment and what they've bought.
           user_id: current_user && current_user.id,
-          listing_id: @listing.id
+          listing_id: @listing.id,
         }
       },
       # as there is a redirection to Stripe's website and then a redirection back after processing of payment. URLs can be added for re-direction.

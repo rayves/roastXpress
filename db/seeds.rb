@@ -50,7 +50,7 @@ if Listing.count == 0
             size: 250,
             price: rand(1..100),
             description: Faker::Coffee.notes,
-            quantity: 10,
+            quantity: rand(1..3),
             origin: Faker::Address.country,
             roast_type: rand(1..4),
             grind_type: GrindType.order(Arel.sql('RANDOM()')).first,
