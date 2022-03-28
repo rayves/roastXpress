@@ -21,6 +21,7 @@ end
 private
 
 def remove_whitespace
-  self.title = self.title.strip
+  self.name = self.name.strip
+  self.origin = self.origin.strip
   self.description = self.description.strip
 end

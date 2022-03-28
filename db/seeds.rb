@@ -48,7 +48,7 @@ if Listing.count == 0
         Listing.create(
             name: Faker::Coffee.blend_name,
             size: 250,
-            price: rand(1..500),
+            price: rand(1..100),
             description: Faker::Coffee.notes,
             quantity: 10,
             origin: Faker::Address.country,
