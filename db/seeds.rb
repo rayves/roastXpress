@@ -9,6 +9,8 @@
 # Clean database and reset id sequence to 1
 ListingsFlavor.delete_all
 ActiveRecord::Base.connection.reset_pk_sequence!("listings_flavors")
+Order.delete_all
+ActiveRecord::Base.connection.reset_pk_sequence!("orders")
 Listing.delete_all
 ActiveRecord::Base.connection.reset_pk_sequence!("listings")
 User.delete_all
