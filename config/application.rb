@@ -33,5 +33,13 @@ module Roastxpress
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+
+    # add support for custom environments in heroku
+    # config file for heroku
+    # if environment PIPE_ENV variable exists then set Rails.application.config.credentials.content_path to config/credentials/[PIPE_ENV].yml.enc
+      # changes the credentials file that is being referenced
+    if ENV["PIPE_ENV"].present?
+      Rails.application.config.credentials.content_path = Rails.root.join("config/credentials/#{ENV["PIPE_ENV"]}.yml.enc")
+    end
   end
 end
