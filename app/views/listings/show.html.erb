@@ -10,23 +10,34 @@
     </div>
     <div class="sidebar col-lg-4 p-0 mx-2 d-md-block">
 
-        <h1 class="mb-sm-2 mb-md-5"><%= @listing.name %></h1>
+        <h1 class="mb-sm-2 mb-md-5"><%= @listing.name.titleize %></h1>
 
-        <h2 class="mb-2">Grind Type: <%= @listing.grind_type.name %></h2>
+        <h2 class="mb-2">Grind Type: <%= @listing.grind_type.name.titleize %></h2>
 
         <h4 class="text-muted mb-3">Roast Type: <%= format_roast_type(@listing.roast_type) %></h4>
 
-        <h5 class="text-muted mb-3">Origin: <%= @listing.origin %></h5>
+        <h5 class="text-muted mb-3">Origin: <%= @listing.origin.titleize %></h5>
 
+        <h5 class="text-muted">Flavors:</h5>
         <% @listing.flavors.each do |flavor| %>
         <span class="badge bg-secondary"><%= flavor.name %></span>
         <% end %>
 
-        <h5 class="text-muted mb-3">Size: <%= @listing.size %></h5>
+        <h5 class="text-muted mb-3 mt-2">Size: <%= @listing.size %>g</h5>
 
-        <h5 class="text-muted mb-3">Price: <%= @listing.price %></h5>
+        <h5 class="text-muted mb-3">Price: $<%= @listing.price %></h5>
 
         <p><%= @listing.description %></p>
+
+        <% if current_user && @listing.quantity > 0 && current_user.id != @listing.user_id %>
+        <button class="btn btn-primary mb-3 pr-2" data-stripe="payment">Buy
+            <%= "$#{@listing.price}" %></button>
+        <% elsif current_user && @listing.quantity < 1 %>
+        <button class="btn btn-secondary mb-2" disabled>SOLD OUT</button>
+        <% elsif current_user && current_user.id == @listing.user_id %>
+        <% else %>
+        <%= button_to "Login to buy", new_user_session_path, class: "btn btn-info" %>
+        <% end %>
 
         <div class="container">
             <% if current_user && current_user.id == @listing.user_id %>
@@ -39,3 +50,15 @@
     </div>
 
 </section>
+
+<script src="https://js.stripe.com/v3/"></script>
+<script>
+    document
+        .querySelector("[data-stripe='payment']") // => find button
+        .addEventListener("click", () => {
+            const stripe = Stripe("<%= Rails.application.credentials.dig(:stripe, :public_key)%>");
+            stripe.redirectToCheckout({
+                sessionId: "<%= @session_id %>"
+            })
+        }) // listening for click event
+</script>

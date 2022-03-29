@@ -9,6 +9,8 @@
 # Clean database and reset id sequence to 1
 ListingsFlavor.delete_all
 ActiveRecord::Base.connection.reset_pk_sequence!("listings_flavors")
+Order.delete_all
+ActiveRecord::Base.connection.reset_pk_sequence!("orders")
 Listing.delete_all
 ActiveRecord::Base.connection.reset_pk_sequence!("listings")
 User.delete_all
@@ -48,9 +50,9 @@ if Listing.count == 0
         Listing.create(
             name: Faker::Coffee.blend_name,
             size: 250,
-            price: rand(1..500),
+            price: rand(1..100),
             description: Faker::Coffee.notes,
-            quantity: 10,
+            quantity: rand(1..3),
             origin: Faker::Address.country,
             roast_type: rand(1..4),
             grind_type: GrindType.order(Arel.sql('RANDOM()')).first,
@@ -60,3 +62,7 @@ if Listing.count == 0
         puts "sample_user created listing no. #{i+1}"
     end
 end
+
+puts "***************"
+puts "SET UP COMPLETE"
+puts "***************"

@@ -1,0 +1,5 @@
+<h1>Welcome to your profile <%= current_user.email %></h1>
+
+<%= link_to "Your Listings", profile_listings_path, class: "btn btn-outline-dark" %>
+
+<%= link_to "Order History", profile_orders_path, class: "btn btn-outline-dark" %>

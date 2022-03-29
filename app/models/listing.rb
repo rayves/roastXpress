@@ -12,5 +12,33 @@ class Listing < ApplicationRecord
   # validation
   validates :name, :size, :price, :description, :quantity, :roast_type, :origin, presence: true
   validates :name, length: {minimum: 4}
+  validates :origin, length: {minimum: 3}
+  validates :price, numericality: {greater_than: 1 }
+  validates :quantity, numericality: {greater_than_or_equal_to: 1 }
+  validates :size, numericality: {greater_than_or_equal_to: 100 }
+
+
+  # Sanitise data with lifecycle hooks
+  before_save :remove_whitespace, :case_check
   
+
+  private
+
+  def remove_whitespace
+    self.name = self.name.strip
+    self.origin = self.origin.strip
+    self.description = self.description.strip
+  end
+
+  def case_check
+    self.name = self.name.downcase
+    self.origin = self.origin.downcase
+  end
+
+  def round_float
+    
+  end
+  
+
 end
+

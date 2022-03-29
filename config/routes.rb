@@ -7,11 +7,16 @@ Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
-  root "pages#home", as: "home"
+  root "pages#home"
 
   # Other paths
   get "about_us", to: "pages#about", as: "about_us"
   get "contact_us", to: "pages#contact", as: "contact_us"
+
+  # Profile paths
+  get "profile", to: "profiles#index", as: "profile"
+  get "profile/listings", to: "profiles#listings", as: "profile_listings"
+  get "profile/orders", to: "profiles#orders", as: "profile_orders"
 
   # listings paths
   get "listings", to: "listings#index", as: "listings" #=> get listings index - displays all listings
@@ -22,4 +27,8 @@ Rails.application.routes.draw do
   put "listings/:id", to: "listings#update" #=> put/patch request to update listing after edting
   patch "listings/:id", to: "listings#update" #=> put/patch request to update listing after edting
   delete "listings/:id", to: "listings#destroy", as: "delete_listing" 
+
+  # payments routes
+  get "/payments/success/:id", to: "payments#success", as: "payments_success"
+  post "/payments/webhook", to: "payments#webhook"
 end

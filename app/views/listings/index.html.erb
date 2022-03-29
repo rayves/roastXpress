@@ -11,7 +11,7 @@
                 <%= image_tag "default_listing.jpg", class: "thumbnail card-img top", alt: "coffee cup" %>
                 <% end %>
                 <div class="card-body">
-                    <h5><%= listing.name %></h5>
+                    <h5><%= listing.name.titleize %></h5>
                     <p class="card-text text-secondary"><%= format_roast_type(listing.roast_type) %></p>
                     <p class="card-text text-secondary"><%= listing.description %></p>
                     <div class="d-flex justify-content-between">

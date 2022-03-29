@@ -10,7 +10,7 @@
 
     <div class="form-group mb-3">
         <%= f.label :price, class: "form-label" %>
-        <%= f.number_field :price %>
+        <%= f.number_field :price, step: "0.01" %>
     </div>
 
     <div class="form-group mb-3">
@@ -66,5 +66,5 @@
 
     <% end %>
 
-    <%= button_to "Cancel", home_path, method: :get %>
+    <%= button_to "Cancel", root_path, method: :get %>
 </main>

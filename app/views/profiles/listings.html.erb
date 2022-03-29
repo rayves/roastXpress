@@ -1,0 +1,34 @@
+<h1 class="hero-title text-center mt-2">Your Listings</h1>
+
+<% if !@listings.empty? %>
+
+<section class="container mt-4 d-flex justify-content-center">
+    <div class="row row-cols-sm-1 row-cols-md-2 row-cols-lg-4">
+        <% @listings.each do |listing| %>
+        <div class="col mb-4">
+            <div class="card cards border-dark h-100">
+                <% if listing.picture.attached? %>
+                <%= image_tag listing.picture, class: "thumbnail card-img top", alt: listing.name %>
+                <% else %>
+                <%= image_tag "default_listing.jpg", class: "thumbnail card-img top", alt: "coffee cup" %>
+                <% end %>
+                <div class="card-body">
+                    <h5><%= listing.name %></h5>
+                    <p class="card-text text-secondary"><%= format_roast_type(listing.roast_type) %></p>
+                    <p class="card-text text-secondary"><%= listing.description %></p>
+                    <div class="d-flex justify-content-between">
+                        <%= link_to "See more", listing_path(listing.id), class: "btn btn-outline-dark" %>
+                        <h5>$<%= listing.price %></h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <% end %>
+    </div>
+</section>
+
+<% else %>
+
+<p class="display-6 d-flex justify-content-center mt-5">You have no currently have no listings</p>
+
+<% end %>
