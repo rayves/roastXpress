@@ -45,6 +45,7 @@ class PaymentsController < ApplicationController
         @listing = Listing.find(listing_id)
         new_quantity = @listing.quantity - 1
         # update quantity on currenty listing to be the current amount less the amount purchased
+        pp new_quantity
         @listing.update(quantity: new_quantity)
         # Create order/purchase and track extra info
         Order.create(listing_id: listing_id, seller_id: @listing.user_id, buyer_id: buyer_id, payment_id: payment_intent_id, receipt_url: receipt)
