@@ -13,7 +13,7 @@
                 <%= image_tag "default_listing.jpg", class: "thumbnail card-img top", alt: "coffee cup" %>
                 <% end %>
                 <div class="card-body">
-                    <h5><%= order.listing.name %></h5>
+                    <h5><%= order.listing.name.titleize %></h5>
                     <p class="card-text text-secondary"><%= format_roast_type(order.listing.roast_type) %></p>
                     <div class="d-flex justify-content-between">
                         <%= link_to "See Listing", listing_path(order.listing_id), class: "btn btn-outline-dark" %>
