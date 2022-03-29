@@ -14,7 +14,7 @@ class Listing < ApplicationRecord
   validates :name, length: {minimum: 4}
   validates :origin, length: {minimum: 3}
   validates :price, numericality: {greater_than: 1 }
-  validates :quantity, numericality: {greater_than_or_equal_to: 1 }
+  validates :quantity, numericality: {greater_than_or_equal_to: 1 }, on: :create
   validates :size, numericality: {greater_than_or_equal_to: 100 }
 
 
