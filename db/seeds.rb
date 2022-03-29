@@ -62,3 +62,7 @@ if Listing.count == 0
         puts "sample_user created listing no. #{i+1}"
     end
 end
+
+puts "***************"
+puts "SET UP COMPLETE"
+puts "***************"

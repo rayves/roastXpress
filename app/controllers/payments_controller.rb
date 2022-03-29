@@ -1,6 +1,6 @@
 class PaymentsController < ApplicationController
     # need to skip auth as the request is coming from stripe api, an outside source
-    before_action :authenticate_user! #=> checks is there a user logged in, if not redirect to sign in page
+    before_action :authenticate_user!, only: %i{success} #=> checks is there a user logged in, if not redirect to sign in page
     skip_before_action :verify_authenticity_token, only: [:webhook]
     before_action :set_order, only: %i{success}
     # authorise user so cannot be accessed via URL
