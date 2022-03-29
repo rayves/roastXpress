@@ -3,10 +3,11 @@ class PaymentsController < ApplicationController
     before_action :authenticate_user! #=> checks is there a user logged in, if not redirect to sign in page
     skip_before_action :verify_authenticity_token, only: [:webhook]
     before_action :set_order, only: %i{success}
+    # authorise user so cannot be accessed via URL
     before_action :authorize_user, only: %i{success}
 
     def success
-        # @order = Order.find_by(listing_id: params[:id])
+        
     end
 
     def webhook
@@ -33,13 +34,17 @@ class PaymentsController < ApplicationController
             return
         end
 
+        # store current payment intent as variable
         payment_intent_id = event.data.object.payment_intent
         payment = Stripe::PaymentIntent.retrieve(payment_intent_id)
+        # store stripe metadata as vriables for use
         listing_id = payment.metadata.listing_id
         buyer_id = payment.metadata.user_id
         receipt = payment.charges.data[0].receipt_url
+        # set current listing as variable
         @listing = Listing.find(listing_id)
         new_quantity = @listing.quantity - 1
+        # update quantity on currenty listing to be the current amount less the amount purchased
         @listing.update(quantity: new_quantity)
         # Create order/purchase and track extra info
         Order.create(listing_id: listing_id, seller_id: @listing.user_id, buyer_id: buyer_id, payment_id: payment_intent_id, receipt_url: receipt)

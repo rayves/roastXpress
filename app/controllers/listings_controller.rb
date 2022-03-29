@@ -22,11 +22,6 @@ class ListingsController < ApplicationController
           description: @listing.description,
           amount: (@listing.price * 100).to_i,
           currency: 'aud',
-          # adjustable_quantity: {
-          #   enabled: true,
-          #   minimum: 1,
-          #   maximum: 10,
-          # },
           quantity: 1
         }
       ],
@@ -88,7 +83,7 @@ private
   def listing_params
     params.require(:listing).permit(:name, :size, :price, :description, :quantity, :origin, :roast_type, :grind_type_id, :picture, flavor_ids: [])
   end
-
+  
   def set_listing
     @listing = Listing.find(params[:id])
   end

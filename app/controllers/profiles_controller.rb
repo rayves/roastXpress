@@ -6,7 +6,7 @@ class ProfilesController < ApplicationController
     end
     
     def orders
-        @orders = Order.where(buyer_id: current_user.id)
+        @orders = Order.where(buyer_id: current_user.id).includes(:listing)
     end
 
     def listings

@@ -12,5 +12,6 @@ module ListingsHelper
         end
         return quantitys
     end
+
 end
 
